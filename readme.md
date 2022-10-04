@@ -2,10 +2,6 @@
 
 ## setup
 
-npm i react-router-dom
-
-npx create-react-app landrup_dans
-
 cd landrup-dans-api
 npm start
 
