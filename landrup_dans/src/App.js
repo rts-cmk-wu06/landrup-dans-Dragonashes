@@ -1,7 +1,7 @@
 import splash from './assets/splash-image.jpg'
-import navicon1 from './assets/Group 1.svg'
-import navicon2 from './assets/Group 2.svg'
-import navicon3 from './assets/Group 3.svg'
+// import navicon1 from './assets/Group 1.svg'
+// import navicon2 from './assets/Group 2.svg'
+// import navicon3 from './assets/Group 3.svg'
 import './App.css'
 
 function App() {
