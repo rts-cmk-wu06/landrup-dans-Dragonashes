@@ -2,8 +2,6 @@
 
 ## setup
 
-npx create-react-app landrup_dans
-
 cd landrup-dans-api
 npm start
 
