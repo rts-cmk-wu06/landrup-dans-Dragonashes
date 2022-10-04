@@ -9,7 +9,6 @@ import {
   Route
 } from "react-router-dom"
 
-import Velkommen from './Pages/Velkommen'
 import Aktiviteter from './Pages/Aktiviteter'
 import Aktivitetsdetalje from './Pages/Aktivitetsdetalje'
 import Soegeside from './Pages/Soegeside'
@@ -23,7 +22,6 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/Velkommen" element={<Velkommen />} />
         <Route path="/Aktiviteter" element={<Aktiviteter />} />
         <Route path="Aktivitetsdetalje/:id" element={<Aktivitetsdetalje />} />
         <Route path="/Soegeside" element={<Soegeside />} />
