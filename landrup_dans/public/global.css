@@ -1,0 +1,36 @@
+/* font */
+
+body {
+  margin: 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.font18 {
+  font-size: 18px;
+}
+
+.font24 {
+  font-size: 24px;
+}
+
+.font36 {
+  font-size: 36px;
+}
+
+/* logo font */
+
+/* font-family Roboto, Racing Sans One */
+
+/* .logo-font {
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Racing Sans One', cursive;
+} */
+
+/* colors */
+
+* {
+  --white: #EAEAEA;
+  --purple: #5E2E53;
+  --pink: #E1A1E9;
+  --black: #000000;
+}
