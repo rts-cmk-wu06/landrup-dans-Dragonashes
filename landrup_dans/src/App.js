@@ -8,7 +8,6 @@ function App() {
   return (
     <div className="App">
 
-
       <div className='hero1'>
         {/* <h1 className="hero1-h1">LANDRUP</h1>
         <h2 className='hero1-h2'>
@@ -30,9 +29,6 @@ function App() {
         <img src={center} className="hero2-img" alt='' />
         <a className='hero2-link' href='Aktiviteter'>Kom i gang</a>
       </div> */}
-
-
-
 
       {/*
       <div className="testclass">hello</div>
