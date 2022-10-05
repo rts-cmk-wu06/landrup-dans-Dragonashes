@@ -1,6 +1,6 @@
 /* container */
 
-.aktivitetsbg {
+.containerbg {
     display: grid;
     grid-template-rows: 91vh 9vh;
 }
@@ -33,13 +33,12 @@
   grid-column: 2;
   width: 80%;
   height: auto;
-  background: green;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 100%;
-  border-top-right-radius: 22px;
-  border-bottom-left-radius: 22px;
-  border-top-left-radius: 22px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
   overflow: clip;
   text-decoration: none;
 }
@@ -50,9 +49,9 @@
   object-fit: cover;
   grid-row: 1/span 3;
   grid-column: 1;
-  border-top-right-radius: 22px;
-  border-bottom-left-radius: 22px;
-  border-top-left-radius: 22px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
 }
 
 .aktiviteter-item-infobar {
