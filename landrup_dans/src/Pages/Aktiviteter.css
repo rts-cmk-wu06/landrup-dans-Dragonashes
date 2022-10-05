@@ -2,16 +2,18 @@
 
 .aktivitetsbg {
     display: grid;
-    grid-template-rows: 90vh 10vh;
+    grid-template-rows: 91vh 9vh;
 }
 
 .titlegrid {
   grid-column: 2;
   display: grid;
   grid-template-columns: 10% 80% 10%;
-  margin: 0;
-  height: 100px;
+  height: 40px;
+  margin-top: 30px;
+  width: 100%;
   align-items: center;
+  justify-items: start;
 }
 
 .titlegrid-item1 {

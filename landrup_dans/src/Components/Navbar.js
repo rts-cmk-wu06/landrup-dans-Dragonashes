@@ -5,10 +5,10 @@ import navicon3 from '../assets/Group 3.svg'
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <a href="/">
+      <a href="Aktiviteter">
         <img src={navicon1} className="navbar-logo" alt="" />
       </a>
-      <a href="Aktiviteter">
+      <a href="Soegeside">
         <img src={navicon2} className="navbar-logo" alt="" />
       </a>
       <a href="Kalender">
