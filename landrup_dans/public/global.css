@@ -25,3 +25,8 @@ body {
   --pink: #E1A1E9;
   --black: #000000;
 }
+
+
+.mainbg {
+  background: var(--purple);
+}
