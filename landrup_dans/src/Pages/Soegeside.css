@@ -1,0 +1,51 @@
+.container-item1 {
+  grid-row: 1;
+  display: grid;
+}
+
+.titlegrid-soegeside {
+  grid-column: 1;
+}
+
+/* search */
+
+.searchgrid {
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+  width: 80%;
+  height: 45px;
+  background: #7c5a74;
+  place-self: center;
+  margin-bottom: 50px;
+}
+
+.magnifyingglassitem {
+  grid-column: 2;
+  grid-row: 1;
+  place-self: center;
+  display: grid;
+}
+
+.magnifyingglass {
+  width: 20px;
+  height: auto;
+}
+
+.searchstyle {
+  border: 0;
+  grid-column: 1;
+  grid-row: 1;
+  color: var(--white);
+  background: #7c5a74;
+}
+
+.searchstyle:focus-visible {
+  outline: 0;
+}
+
+.borderitem {
+  outline: 2px solid var(--grey);
+  grid-row: 1;
+  grid-column: 1/span 2;
+  z-index: -1;
+}

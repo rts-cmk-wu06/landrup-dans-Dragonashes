@@ -20,7 +20,7 @@ const Aktiviteter = () => {
   var link = 'http://localhost:3000/Aktiviteter/'
 
   return (
-    <div className="aktivitetsbg mainbg">
+    <div className="containerbg mainbg">
       {Loading ? <h1>Loading...</h1> :
         <>
 
