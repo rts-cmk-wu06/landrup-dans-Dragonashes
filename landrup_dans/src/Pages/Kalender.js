@@ -1,6 +1,12 @@
+import Navbar from "../Components/Navbar"
+
 const Kalender = () => {
   return (
-    <>hello</>
+    <>
+      <div>hello</div>
+
+      <Navbar />
+    </>
   )
 }
 
