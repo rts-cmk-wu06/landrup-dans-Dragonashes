@@ -1,6 +1,12 @@
+import Navbar from "../Components/Navbar"
+
 const Soegeside = () => {
   return (
-    <>hello</>
+    <>
+      <div>hello</div>
+
+      <Navbar />
+    </>
   )
 }
 

@@ -1,4 +1,12 @@
+/* container */
+
+.aktivitetsbg {
+    display: grid;
+    grid-template-rows: 90vh 10vh;
+}
+
 .titlegrid {
+  grid-column: 2;
   display: grid;
   grid-template-columns: 10% 80% 10%;
   margin: 0;
@@ -16,9 +24,11 @@
   display: grid;
   place-items: center;
   row-gap: 20px;
+  overflow: scroll;
 }
 
 .aktiviteter-item {
+  grid-column: 2;
   width: 80%;
   height: auto;
   background: green;

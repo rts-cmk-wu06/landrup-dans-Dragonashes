@@ -1,6 +1,11 @@
+import Navbar from "../Components/Navbar"
+
 const Aktivitetsdetalje = () => {
   return (
-    <>hello</>
+    <>
+      <div>hello</div>
+      <Navbar />
+    </>
   )
 }
 
