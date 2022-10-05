@@ -33,11 +33,11 @@ function App() {
       {/*
       <div className="testclass">hello</div>
       <a href="Aktiviteter">Kom i gang</a>
-      <img src={splash} className="App-logo" alt="logo" />
+      <img src={splash} className="App-logo" alt="" />
 
-      <img src={navicon1} className="App-logo" alt="logo" />
-      <img src={navicon2} className="App-logo" alt="logo" />
-      <img src={navicon3} className="App-logo" alt="logo" /> */}
+      <img src={navicon1} className="App-logo" alt="" />
+      <img src={navicon2} className="App-logo" alt="" />
+      <img src={navicon3} className="App-logo" alt="" /> */}
 
     </div>
   )

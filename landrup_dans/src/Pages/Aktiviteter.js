@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import './Aktiviteter.css'
 
+import Navbar from "../Components/Navbar"
+
 const Aktiviteter = () => {
 
   const [classes, setAktiviteter] = useState([])
@@ -18,14 +20,15 @@ const Aktiviteter = () => {
   var link = 'http://localhost:3000/Aktiviteter/'
 
   return (
-    <div className="mainbg">
+    <div className="aktivitetsbg mainbg">
       {Loading ? <h1>Loading...</h1> :
         <>
-          <h1 className="titlegrid">
-            <span className="titlegrid-item1 font36">&nbsp;Aktiviteter</span>
 
-          </h1>
           <div className="aktiviteter">
+
+            <h1 className="titlegrid">
+              <span className="titlegrid-item1 font36">&nbsp;Aktiviteter</span>
+            </h1>
             {classes.map((item, index) => {
               return (
                 <a href={link + item.id} key={index} className="aktiviteter-item">
@@ -40,6 +43,8 @@ const Aktiviteter = () => {
           </div>
         </>
       }
+
+      <Navbar />
     </div>
   )
 }
