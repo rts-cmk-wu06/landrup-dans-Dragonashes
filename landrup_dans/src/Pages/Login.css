@@ -44,7 +44,6 @@
   /* clip-path: polygon(87% 0, 100% 0, 100% 64%, 0 100%, 0 28%); */
   grid-column: 1;
   grid-row: 1/span 2;
-  background: yellow;
 }
 
 .item2 {
