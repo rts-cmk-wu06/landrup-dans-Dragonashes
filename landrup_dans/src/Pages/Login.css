@@ -1,0 +1,146 @@
+* {
+  --overlay: rgba(0, 0, 0, 0.7);
+  --grey: #9E9E9E;
+  --yellow: #ffd339;
+  --yellow2: #ff0;
+  --yellow3: #f1c40e;
+  --white2: #fcfbfb;
+  --red: crimson;
+  --greenyellow: greenyellow;
+}
+
+
+.loginbg {
+  background: var(--pink);
+  display: grid;
+  grid-template-rows: 3fr 7fr;
+}
+
+.colorbox {
+  width: 100vw;
+  height: 500px;
+  grid-column: 1;
+  grid-row: 1;
+  background: var(--black);
+
+  /* translate */
+  transform: rotate(45deg);
+  filter: opacity(0.5);
+
+}
+
+/* splash img */
+
+.splashgrid {
+  display: grid;
+
+}
+
+.loginsplash {
+  object-fit: cover;
+  width: 100%;
+  height: 100vh;
+  /* https://bennettfeely.com/clippy/ */
+  /* clip-path: polygon(87% 0, 100% 0, 100% 64%, 0 100%, 0 28%); */
+  grid-column: 1;
+  grid-row: 1/span 2;
+  background: yellow;
+}
+
+.item2 {
+  height: 200px;
+  width: auto;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* intro */
+
+.login-title {
+  margin-left: 40px;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: var(--black);
+  font-weight: 500;
+  /* grid-column: 1;
+  grid-row: 1; */
+  place-self: start;
+}
+
+.inlinehr {
+  display: inline-flex;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+h1 {
+  color: var(--yellow3);
+  font-size: 56px;
+}
+
+hr {
+  height: 2px;
+  width: 36px;
+}
+
+.hrblack {
+  background: var(--black);
+}
+
+/* login */
+
+.login-form {
+  grid-row: 2;
+  grid-column: 1;
+  display: grid;
+  place-items: center;
+  grid-template-rows: 50px 40px 40px 40px 40px 100px;
+  /* height: 391px; */
+}
+
+h3 {
+  font-size: 18px;
+}
+
+.login-form-username:has(+ input:not(:placeholder-shown):invalid)::before {
+  content: 'X minimum 5 characters';
+  color: var(--red);
+}
+
+.inputsizing {
+  width: 300px;
+  height: 50px;
+  padding-left: 30px;
+  border: 0;
+  outline: 1px solid var(--grey);
+  color: var(--grey);
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.inputsizing:not(:placeholder-shown) {
+  outline: 2px solid var(--red);
+}
+
+.inputsizing:valid {
+  outline: 2px solid var(--greenyellow);
+}
+
+.login-form-password:has(+ input:not(:placeholder-shown):invalid)::before {
+  content: 'X minimum 4 letters';
+  color: var(--red);
+}
+
+.login-form-btn {
+  width: 220px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 50px;
+  padding-right: 50px;
+  background: var(--purple);
+  color: var(--white);
+}
