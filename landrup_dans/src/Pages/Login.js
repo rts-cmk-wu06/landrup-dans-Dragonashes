@@ -96,7 +96,7 @@ const Login = () => {
               ref={username}
               required
               minLength="5"
-              maxLength="5"
+              maxLength="11"
             />
             <label className='login-form-password'></label>
             <input
