@@ -24,21 +24,6 @@ const Aktivitetsdetalje = () => {
 
   console.log("this is assets: " + assets)
 
-  // function that returns renderassets
-
-  const renderAssets = () => {
-    return assets.map((item, index) => {
-      <div key={index}>
-        <div>{assets.name}</div>
-        <div>{assets.description}</div>
-        <div>{assets.weekday}</div>
-        <div>{assets.time}</div>
-        <div>{assets.minAge}</div>
-        <div>{assets.maxAge}</div>
-      </div>
-    })
-  }
-
   return (
     <div className="containerbg mainbg">
       {loadingactivities ? <h1>Loading...</h1> :
