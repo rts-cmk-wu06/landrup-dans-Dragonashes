@@ -11,9 +11,15 @@ const Navbar = () => {
       <a href="/Soegeside">
         <img src={navicon2} className="navbar-logo" alt="" />
       </a>
-      <a href="/Kalender">
-        <img src={navicon3} className="navbar-logo" alt="" />
-      </a>
+      {!localStorage.getItem('token') ? (
+        <a href="/Login">
+          <img src={navicon3} className="navbar-logo" alt="" />
+        </a>
+      ) : (
+        <a href="/Kalender">
+          <img src={navicon3} className="navbar-logo" alt="" />
+        </a>
+      )}
     </nav>
   )
 }

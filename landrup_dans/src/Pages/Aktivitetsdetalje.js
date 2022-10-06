@@ -31,11 +31,17 @@ const Aktivitetsdetalje = () => {
           <div className="aktivitetsdetalje">
             <div className="aktivitetsdetalje-item">
 
-            {/* <img src={assets.asset.url} className="aktivitetsdetalje-item-img" alt="" /> */}
-
               <div className="tildmeldt-grid">
                 <img src={assets.asset.url} className="aktivitetsdetalje-item-img" alt="" />
-                <div className="tildmeldt-grid-btn">Tilmeld</div>
+
+                {!localStorage.getItem('token') ? (
+                  <a href="/Login">
+                    <div className="tildmeldt-grid-btn">Tilmeld</div>
+                  </a>
+                ) : (
+                  <div className="tildmeldt-grid-btn">Tilmeld</div>
+                )}
+
               </div>
 
               <div className="aktivitetsdetalje-item-infobar">
