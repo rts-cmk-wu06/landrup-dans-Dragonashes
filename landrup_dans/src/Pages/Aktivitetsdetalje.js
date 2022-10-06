@@ -6,7 +6,7 @@ const Aktivitetsdetalje = () => {
 
   let params = useParams()
 
-  console.log(params)
+  // console.log(params)
 
   const [loadingactivities, setLoadingactivities] = useState(true)
   const [assets, setAssets] = useState([])
@@ -20,9 +20,104 @@ const Aktivitetsdetalje = () => {
       })
   }, [params.id])
 
-  console.log("this is params id: " + params.id)
+  var userselected = localStorage.getItem('userId')
+  const token = localStorage.getItem('token')
 
-  console.log("this is assets: " + assets)
+  function handlepost() {
+    if (token !== null) {
+      fetch('http://localhost:4000/api/v1/users/' + userselected + '/activities/' + params.id,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        })
+        .then(response => response.json())
+
+    } else if (token === null) {
+      console.log('Please login first')
+    }
+  }
+
+  const [assets2, setAssets2] = useState([])
+  const [Age, setAge] = useState([])
+  useEffect(() => {
+    fetch('http://localhost:4000/api/v1/activities/' + params.id,
+      {
+        method: 'GET'
+      })
+      .then(response => response.json())
+      .then(response => {
+        for (var i = 0; i < response.users.length; i++) {
+          if (response.users[i].id == userselected) {
+            console.log('user is signed up')
+            console.log("users age is: " + response.users[i].age)
+            setAssets2(response.users[i].id)
+            setAge(response.users[i].age)
+          }
+        }
+      })
+  }, [])
+
+  function handledelete() {
+    fetch('http://localhost:4000/api/v1/users/' + userselected + '/activities/' + params.id, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      })
+      .then(response => response.json())
+  }
+
+  function specialrender() {
+    if (!localStorage.getItem('token')) {
+      return (
+        <div></div>
+      )
+    } else if (assets2 == userselected) {
+      return (
+        <form>
+          <button type="submit" className="tildmeldt-grid-btn" onClick={handledelete}>Forlad</button>
+        </form>
+      )
+    } else if (assets2 !== userselected) {
+      return (
+        <form>
+          <button type="submit" className="tildmeldt-grid-btn" onClick={handlepost}>Tilmeld</button>
+        </form>
+      )
+    } else {
+      return (
+        <div>hello</div>
+      )
+    }
+
+    // else {
+    //   return (
+    //     <form>
+    //       <button type="submit" className="tildmeldt-grid-btn" onSubmit={handlepost}>Tilmeld</button>
+    //     </form>
+    //   )
+    // }
+
+    // if (assets2 == userselected) {
+    //   return (
+    //     <form>
+    //       <button type="submit" className="tildmeldt-grid-btn" onSubmit={handledelete}>Forlad</button>
+    //     </form>
+    //   )
+    // }
+    // else {
+    //   return (
+    //     <form>
+    //       <button type="submit" className="tildmeldt-grid-btn" onSubmit={handlepost}>Tilmeld</button>
+    //     </form>
+    //   )
+    // }
+
+  }
 
   return (
     <div className="containerbg mainbg">
@@ -34,13 +129,28 @@ const Aktivitetsdetalje = () => {
               <div className="tildmeldt-grid">
                 <img src={assets.asset.url} className="aktivitetsdetalje-item-img" alt="" />
 
-                {!localStorage.getItem('token') ? (
-                  <a href="/Login">
-                    <div className="tildmeldt-grid-btn">Tilmeld</div>
-                  </a>
+                {/* {!localStorage.getItem('token') ? (
+                  // <a href="/Login">
+                  //   <div className="tildmeldt-grid-btn">Tilmeld</div>
+                  // </a>
+                  <div></div>
                 ) : (
-                  <div className="tildmeldt-grid-btn">Tilmeld</div>
+                  <form>
+                    <button type="submit" className="tildmeldt-grid-btn" onSubmit={handlepost()}>Tilmeld</button>
+                  </form>
+                )} */}
+
+                {specialrender()}
+
+                {/*
+                {assets2 == userselected ? (
+                  <form>
+                    <button type="submit" className="tildmeldt-grid-btn" onSubmit={handledelete()}>DELETE</button>
+                  </form>
+                ) : (
+                  <div></div>
                 )}
+                */}
 
               </div>
 
