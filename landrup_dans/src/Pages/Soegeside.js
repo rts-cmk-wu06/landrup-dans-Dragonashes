@@ -2,10 +2,11 @@ import Navbar from "../Components/Navbar"
 import './Soegeside.css'
 import magnifyingglass from '../assets/magnifying-glass.svg'
 import { useState, useEffect } from "react"
+import { useSearchParams } from "react-router-dom"
 
 const Soegeside = () => {
 
-  const [classes, setAktiviteter] = useState([])
+  const [Aktiviteter, setAktiviteter] = useState([])
   const [Loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -16,6 +17,24 @@ const Soegeside = () => {
         setLoading(false)
       })
   }, [])
+
+
+  console.log(Aktiviteter)
+
+  // var searchdb = new Set(assets)
+  // var t = new Set(assets2)
+  // t.forEach(searchdb.add, searchdb)
+
+  var searchdb2 = []
+  Aktiviteter.forEach(function (value) {
+    searchdb2.push(value.name)
+    searchdb2.push(value.weekday)
+  })
+  var searchdb3 = searchdb2.filter(function (item) {
+    return item != null
+  })
+
+  let [searchParams, setSearchParams] = useSearchParams()
 
   var link = 'http://localhost:3000/Aktivitetsdetalje/'
 
@@ -28,8 +47,6 @@ const Soegeside = () => {
 
       <div className="container-item1">
 
-        {/* <div>Søg</div> */}
-
         <h1 className="titlegrid titlegrid-soegeside">
           <span className="titlegrid-item1 font36">Søg</span>
         </h1>
@@ -39,21 +56,20 @@ const Soegeside = () => {
             type="search"
             list="searchdb"
             className="searchstyle"
-          // value={searchParams.get("filter") || ""}
-          // onChange={e => {
-          //   let filter = e.target.value
-          //   if (filter) {
-          //     setSearchParams({ filter })
-          //   } else {
-          //     setSearchParams({})
-          //   }
-          // }}
+            value={searchParams.get("filter") || ""}
+            onChange={e => {
+              let filter = e.target.value
+              if (filter) {
+                setSearchParams({ filter })
+              } else {
+                setSearchParams({})
+              }
+            }}
           />
           <datalist id="searchdb">
-            {/* {searchdb3.map((item, index) => (
-          <option key={index} value={item} />
-          ))} */}
-            <option>hello</option>
+            {searchdb3.map((item, index) => (
+              <option key={index} value={item} />
+            ))}
           </datalist>
           <div className="magnifyingglassitem">
             <img src={magnifyingglass} className="magnifyingglass" alt='' />
@@ -61,29 +77,43 @@ const Soegeside = () => {
           {/* <div className="borderitem"></div> */}
         </div>
 
+        {
+          searchParams.get("filter") ? (
+            searchdb3
+              .filter(item => {
+                console.log(item)
+                let filter = searchParams.get("filter")
+                if (!filter) return true
+                let name = item.toLowerCase()
+                return name.startsWith(filter.toLowerCase())
+              })
+              .map(item => (
+                <div key={item}>{item}</div>
+              ))
+          ) : (
+            <></>
+          )
+        }
+
         {Loading ? <h1>Loading...</h1> :
-        <>
-          <div className="aktiviteter">
+          <>
+            <div className="aktiviteter">
 
-            {classes.map((item, index) => {
-              return (
-                <a href={link + item.id} key={index} className="aktiviteter-item">
-                  <img src={item.asset.url} className="aktiviteter-item-img" alt="" />
-                  <div className="aktiviteter-item-infobar">
-                    <div className="aktiviteter-item-infobar-text1 font18">{item.name}</div>
-                    <div className="aktiviteter-item-infobar-text2 font18">{item.minAge}-{item.maxAge} år</div>
-                  </div>
-                </a>
-              )
-            })}
-          </div>
-        </>
-      }
-
+              {Aktiviteter.map((item, index) => {
+                return (
+                  <a href={link + item.id} key={index} className="aktiviteter-item">
+                    <img src={item.asset.url} className="aktiviteter-item-img" alt="" />
+                    <div className="aktiviteter-item-infobar">
+                      <div className="aktiviteter-item-infobar-text1 font18">{item.name}</div>
+                      <div className="aktiviteter-item-infobar-text2 font18">{item.minAge}-{item.maxAge} år</div>
+                    </div>
+                  </a>
+                )
+              })}
+            </div>
+          </>
+        }
       </div>
-
-
-
       <Navbar />
     </div>
   )
