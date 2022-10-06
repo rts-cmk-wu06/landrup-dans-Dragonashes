@@ -68,7 +68,7 @@ const Login = () => {
     window.localStorage.removeItem('token')
     window.localStorage.removeItem('username')
     window.localStorage.removeItem('userId')
-    navigate("/Home")
+    navigate("/Aktiviteter")
   }
 
   return (
