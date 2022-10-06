@@ -17,7 +17,7 @@ const Aktiviteter = () => {
       })
   }, [])
 
-  var link = 'http://localhost:3000/Aktiviteter/'
+  var link = 'http://localhost:3000/Aktivitetsdetalje/'
 
   return (
     <div className="containerbg mainbg">
