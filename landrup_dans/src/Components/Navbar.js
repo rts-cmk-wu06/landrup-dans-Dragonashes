@@ -8,10 +8,10 @@ const Navbar = () => {
       <a href="/Aktiviteter">
         <img src={navicon1} className="navbar-logo" alt="" />
       </a>
-      <a href="Soegeside">
+      <a href="/Soegeside">
         <img src={navicon2} className="navbar-logo" alt="" />
       </a>
-      <a href="Kalender">
+      <a href="/Kalender">
         <img src={navicon3} className="navbar-logo" alt="" />
       </a>
     </nav>
