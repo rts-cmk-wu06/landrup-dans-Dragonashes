@@ -38,7 +38,6 @@ const Aktivitetsdetalje = () => {
                 <div className="tildmeldt-grid-btn">Tilmeld</div>
               </div>
 
-
               <div className="aktivitetsdetalje-item-infobar">
                 <div className="aktivitetsdetalje-item-infobar-text1 font24">{assets.name}</div>
                 <div className="aktivitetsdetalje-item-infobar-text2 font18">{assets.minAge}-{assets.maxAge} år</div>
