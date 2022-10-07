@@ -58,7 +58,7 @@ const Aktivitetsdetalje = () => {
           }
         }
       })
-  }, [params.id])
+  }, [userselected])
 
   function handledelete() {
     fetch('http://localhost:4000/api/v1/users/' + userselected + '/activities/' + params.id, {
