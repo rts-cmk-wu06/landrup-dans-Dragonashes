@@ -1,7 +1,5 @@
 # Dokumentation
 
-mangler kode eksempel
-
 ## Tech Stack
 
 ### Versions styring
@@ -31,6 +29,7 @@ mangler kode eksempel
 
 - Axios i stedet for Fetch api forbereder JSON bedre
 - Netlify så man kan se en live version af appen, dette sikrer os at der ikke er ting som kommer til at virke anderledes end hvis man udvikler lokalt.
+- "Overveje" AppContext for at undgå at skulle hente localStorage i alle komponenter
 
 ### Forbedringer
 
@@ -51,11 +50,17 @@ Jeg har lavet et workflow, der kører på push til master. Dette workflow kører
 ![Drag Racing](github-actions-failure.png)
 
 
-## Projekt perspektivering
+## Kode eksempel
 
+Jeg vil i min kode komme nærmere ind på dette stykke kode
 
+![Drag Racing](kode-eksempel.png)
 
-## fremgang
+## Tilgang til opgaven
+
+Jeg har brugt Github projects til opgaven, som er en type Kanban board. Mange af mine opgaver er tilknytttet et Issue eller PullRequest.
+
+![Drag Racing](kanban.png)
 
 ### dag 1
 
