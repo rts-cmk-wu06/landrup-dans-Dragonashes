@@ -41,7 +41,7 @@ const Aktivitetsdetalje = () => {
   }
 
   const [assets2, setAssets2] = useState([])
-  const [Age, setAge] = useState([])
+  // const [Age, setAge] = useState([])
   useEffect(() => {
     fetch('http://localhost:4000/api/v1/activities/' + params.id,
       {
@@ -54,11 +54,11 @@ const Aktivitetsdetalje = () => {
             console.log('user is signed up')
             console.log("users age is: " + response.users[i].age)
             setAssets2(response.users[i].id)
-            setAge(response.users[i].age)
+            // setAge(response.users[i].age)
           }
         }
       })
-  }, [])
+  }, [params.id])
 
   function handledelete() {
     fetch('http://localhost:4000/api/v1/users/' + userselected + '/activities/' + params.id, {
