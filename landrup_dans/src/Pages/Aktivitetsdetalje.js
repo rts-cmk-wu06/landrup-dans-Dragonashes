@@ -6,10 +6,23 @@ const Aktivitetsdetalje = () => {
 
   let params = useParams()
 
-  // console.log(params)
-
   const [loadingactivities, setLoadingactivities] = useState(true)
   const [assets, setAssets] = useState([])
+  const [Age, setAge] = useState([])
+  const [Loadingage, setLoadingage] = useState(true)
+
+  fetch('http://localhost:4000/api/v1/users/6' + userselected,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    })
+    .then(response => response.json())
+    .then(response => {
+      setAge(response.age)
+    })
 
   useEffect(() => {
     fetch('http://localhost:4000/api/v1/activities/' + params.id)
@@ -23,25 +36,8 @@ const Aktivitetsdetalje = () => {
   var userselected = localStorage.getItem('userId')
   const token = localStorage.getItem('token')
 
-  function handlepost() {
-    if (token !== null) {
-      fetch('http://localhost:4000/api/v1/users/' + userselected + '/activities/' + params.id,
-        {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
-        })
-        .then(response => response.json())
-
-    } else if (token === null) {
-      console.log('Please login first')
-    }
-  }
-
   const [assets2, setAssets2] = useState([])
-  // const [Age, setAge] = useState([])
+
   useEffect(() => {
     fetch('http://localhost:4000/api/v1/activities/' + params.id,
       {
@@ -51,23 +47,41 @@ const Aktivitetsdetalje = () => {
       .then(response => {
         for (var i = 0; i < response.users.length; i++) {
           if (response.users[i].id == userselected) {
-            console.log('user is signed up')
-            console.log("users age is: " + response.users[i].age)
             setAssets2(response.users[i].id)
-            // setAge(response.users[i].age)
           }
         }
       })
   }, [params.id, userselected])
 
+  function handlepost() {
+    if (token !== null) {
+
+      if (Age >= assets.minAge && Age <= assets.maxAge) {
+        fetch('http://localhost:4000/api/v1/users/' + userselected + '/activities/' + params.id,
+          {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/x-www-form-urlencoded'
+            }
+          })
+          .then(response => response.json())
+      } else {
+        console.log("user is not old enough to attend activity")
+      }
+    } else if (token === null) {
+      console.log('Please login first')
+    }
+  }
+
   function handledelete() {
     fetch('http://localhost:4000/api/v1/users/' + userselected + '/activities/' + params.id, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      })
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    })
       .then(response => response.json())
   }
 
@@ -93,34 +107,13 @@ const Aktivitetsdetalje = () => {
         <div>hello</div>
       )
     }
-
-    // else {
-    //   return (
-    //     <form>
-    //       <button type="submit" className="tildmeldt-grid-btn" onSubmit={handlepost}>Tilmeld</button>
-    //     </form>
-    //   )
-    // }
-
-    // if (assets2 == userselected) {
-    //   return (
-    //     <form>
-    //       <button type="submit" className="tildmeldt-grid-btn" onSubmit={handledelete}>Forlad</button>
-    //     </form>
-    //   )
-    // }
-    // else {
-    //   return (
-    //     <form>
-    //       <button type="submit" className="tildmeldt-grid-btn" onSubmit={handlepost}>Tilmeld</button>
-    //     </form>
-    //   )
-    // }
-
   }
 
   return (
     <div className="containerbg mainbg">
+
+      {/* {Loadingage ? (<div>Loading...</div>) : (<div>not loading</div>)} */}
+
       {loadingactivities ? <h1>Loading...</h1> :
         <>
           <div className="aktivitetsdetalje">
@@ -129,28 +122,7 @@ const Aktivitetsdetalje = () => {
               <div className="tildmeldt-grid">
                 <img src={assets.asset.url} className="aktivitetsdetalje-item-img" alt="" />
 
-                {/* {!localStorage.getItem('token') ? (
-                  // <a href="/Login">
-                  //   <div className="tildmeldt-grid-btn">Tilmeld</div>
-                  // </a>
-                  <div></div>
-                ) : (
-                  <form>
-                    <button type="submit" className="tildmeldt-grid-btn" onSubmit={handlepost()}>Tilmeld</button>
-                  </form>
-                )} */}
-
                 {specialrender()}
-
-                {/*
-                {assets2 == userselected ? (
-                  <form>
-                    <button type="submit" className="tildmeldt-grid-btn" onSubmit={handledelete()}>DELETE</button>
-                  </form>
-                ) : (
-                  <div></div>
-                )}
-                */}
 
               </div>
 
