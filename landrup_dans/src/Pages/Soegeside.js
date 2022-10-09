@@ -64,26 +64,28 @@ const Soegeside = () => {
           </div>
         </div>
 
-        {
-          searchParams.get("filter") ? (
-            searchdb3
-              .filter(item => {
-                let filter = searchParams.get("filter")
-                if (!filter) return true
-                let name = item.toLowerCase()
-                return name.startsWith(filter.toLowerCase())
-              })
-              .map(item => (
-                <div key={item}>{item}</div>
-              ))
-          ) : (
-            <></>
-          )
-        }
+
 
         {Loading ? <h1>Loading...</h1> :
           <>
             <div className="aktiviteter">
+
+              {
+                searchParams.get("filter") ? (
+                  searchdb3
+                    .filter(item => {
+                      let filter = searchParams.get("filter")
+                      if (!filter) return true
+                      let name = item.toLowerCase()
+                      return name.startsWith(filter.toLowerCase())
+                    })
+                    .map(item => (
+                      <div key={item} className="searchResultItem">{item}</div>
+                    ))
+                ) : (
+                  <></>
+                )
+              }
 
               {Aktiviteter.map((item, index) => {
                 return (
