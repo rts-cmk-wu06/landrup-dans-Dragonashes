@@ -57,7 +57,7 @@ Jeg har lavet et workflow, der kører på push til master. Dette workflow kører
 
 Jeg vil i min kode komme nærmere ind på dette stykke kode
 
-![Drag Racing](kode-eksempel.png)
+![Drag Racing](kode-eksempel2.png)
 
 ## Tilgang til opgaven
 

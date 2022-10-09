@@ -18,6 +18,7 @@ const Login = () => {
   const token = localStorage.getItem('token')
 
   const handleSubmit = async (e) => {
+
     e.preventDefault()
     setLoading(true)
     axios.post('http://localhost:4000/auth/token', {
@@ -25,6 +26,7 @@ const Login = () => {
       password: password.current.value
     })
       .then((response) => {
+
         localStorage.setItem('token', response.data.token)
         localStorage.setItem('userId', response.data.userId)
         navigate('/Kalender')
@@ -37,6 +39,7 @@ const Login = () => {
         })
       })
       .catch((error) => {
+
         setLoginError(true)
         setLoading(false)
         document.querySelector('.login-form').reset() // required
@@ -45,6 +48,7 @@ const Login = () => {
   }
 
   const Logout = () => {
+
     window.localStorage.removeItem('token')
     window.localStorage.removeItem('username')
     window.localStorage.removeItem('userId')
