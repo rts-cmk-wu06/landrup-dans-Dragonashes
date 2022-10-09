@@ -86,4 +86,4 @@ Jeg har brugt Github projects til opgaven, som er en type Kanban board. Mange af
 
 ### dag 7
 
-![Drag Racing](doc_assets/dag7v2.png)
+![Drag Racing](doc_assets/dag7v3.png)
