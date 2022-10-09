@@ -48,7 +48,7 @@ Jeg har lavet et workflow, der kører på push til master. Dette workflow kører
 
 ![Drag Racing](github-actions.png)
 ![Drag Racing](github-actions-failure.png)
-
+![Drag Racing](github-actions-success.png)
 
 ## Kode eksempel
 
@@ -77,3 +77,5 @@ Jeg har brugt Github projects til opgaven, som er en type Kanban board. Mange af
 ### dag 4
 
 ![Drag Racing](dag4.png)
+
+### dag 6
