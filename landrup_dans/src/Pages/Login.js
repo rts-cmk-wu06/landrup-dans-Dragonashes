@@ -2,6 +2,7 @@ import './Login.css'
 import { useState, createRef } from "react"
 import { useNavigate } from "react-router-dom"
 import splash from '../assets/splash-image.jpg'
+import axios from 'axios'
 
 const Login = () => {
 
@@ -35,9 +36,7 @@ const Login = () => {
     }).then((data) => {
       localStorage.setItem('token', data.token)
       localStorage.setItem('userId', data.userId)
-      localStorage.setItem('username', username)
       navigate("/Kalender")
-
       fetch('http://localhost:4000/api/v1/users/' + localStorage.getItem('userId'),
         {
           method: 'GET',

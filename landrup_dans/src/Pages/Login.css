@@ -59,7 +59,6 @@
   outline: 1px solid var(--grey);
   color: var(--grey);
   font-size: 18px;
-  margin-bottom: 20px;
 }
 
 .inputsizing:not(:placeholder-shown) {

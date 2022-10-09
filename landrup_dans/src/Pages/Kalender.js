@@ -1,19 +1,16 @@
 import Navbar from "../Components/Navbar"
 import { useState, useEffect } from "react"
 import "./Kalender.css"
+import axios from "axios"
 
 const Kalender = () => {
 
   const [assets, setAssets] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/v1/activities',
-      {
-        method: 'GET'
-      })
-      .then(response => response.json())
+    axios.get('http://localhost:4000/api/v1/activities')
       .then(response => {
-        setAssets(response)
+        setAssets(response.data)
       })
   }, [])
 
