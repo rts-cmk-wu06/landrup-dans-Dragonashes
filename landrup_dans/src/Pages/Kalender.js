@@ -21,9 +21,25 @@ const Kalender = () => {
 
   return (
     <>
-      {assets.map((item, index) => {
+      {/* {assets.map((item, index) => {
         for (var i = 0; i < item.users.length; i++) {
           if (item.users[i].id == userselected) {
+            return (
+              <div key={index}>
+                <p>{item.name}</p>
+                <p>{item.weekday}</p>
+                <p>{item.time}</p>
+                <a href={link + item.id}>{item.id} link</a>
+              </div>
+            )
+          }
+        }
+      })} */}
+
+      {/* {
+        assets.forEach((item, index) => {
+          for (var i = 0; i < item.users.length; i++) {
+            if (item.users[i].id == userselected) {
               return (
                 <div key={index}>
                   <p>{item.name}</p>
@@ -32,9 +48,29 @@ const Kalender = () => {
                   <a href={link + item.id}>{item.id} link</a>
                 </div>
               )
+            }
           }
-        }
-      })}
+        })
+      } */}
+
+      {
+        assets.filter((item) => {
+          for (var i = 0; i < item.users.length; i++) {
+            if (item.users[i].id == userselected) {
+              return true
+            }
+          }
+        }).map((item, index) => {
+          return (
+            <div key={index}>
+              <p>{item.name}</p>
+              <p>{item.weekday}</p>
+              <p>{item.time}</p>
+              <a href={link + item.id}>{item.id} link</a>
+            </div>
+          )
+        })
+      }
 
       <Navbar />
     </>

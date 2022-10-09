@@ -86,23 +86,6 @@ const Aktivitetsdetalje = () => {
       .then(response => response.json())
   }
 
-  function handlepost() {
-    if (token !== null) {
-      fetch('http://localhost:4000/api/v1/users/' + userselected + '/activities/' + params.id,
-        {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
-        })
-        .then(response => response.json())
-
-    } else if (token === null) {
-      console.log('Please login first')
-    }
-  }
-
   function specialrender() {
     if (!localStorage.getItem('token')) {
       return (
