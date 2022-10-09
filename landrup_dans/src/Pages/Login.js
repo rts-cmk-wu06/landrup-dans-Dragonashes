@@ -12,8 +12,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false)
   const [loginError, setLoginError] = useState(undefined)
 
-  // let { setIsAuthenticated } = useContext(LoginContext)
-
   let navigate = useNavigate()
 
   const handleSubmit = async (e) => {
@@ -33,8 +31,6 @@ const Login = () => {
         throw new Error('Unauthorized')
       }
     }).then((data) => {
-      console.log(data)
-      // setIsAuthenticated(data.token)
       localStorage.setItem('token', data.token)
       localStorage.setItem('userId', data.userId)
       localStorage.setItem('username', username)
@@ -53,11 +49,9 @@ const Login = () => {
             throw new Error('Unauthorized')
           }
         }).then((data2) => {
-          console.log(data2)
           localStorage.setItem('username', data2.username)
         })
     }).catch((error) => {
-      console.log(error)
       setLoading(false)
       document.querySelector('.login-form').reset() // required
     })
@@ -85,7 +79,6 @@ const Login = () => {
             onSubmit={handleSubmit}
             className="login-form"
           >
-            {/* <h3>Log in with your credentials</h3> */}
             <h1 className='login-title'>Log ind</h1>
             <label className='login-form-username'></label>
             <input

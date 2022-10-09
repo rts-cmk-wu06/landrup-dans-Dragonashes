@@ -36,6 +36,7 @@ const Aktivitetsdetalje = () => {
   var userselected = localStorage.getItem('userId')
   const token = localStorage.getItem('token')
 
+
   const [assets2, setAssets2] = useState([])
 
   useEffect(() => {
@@ -83,6 +84,23 @@ const Aktivitetsdetalje = () => {
       }
     })
       .then(response => response.json())
+  }
+
+  function handlepost() {
+    if (token !== null) {
+      fetch('http://localhost:4000/api/v1/users/' + userselected + '/activities/' + params.id,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        })
+        .then(response => response.json())
+
+    } else if (token === null) {
+      console.log('Please login first')
+    }
   }
 
   function specialrender() {
