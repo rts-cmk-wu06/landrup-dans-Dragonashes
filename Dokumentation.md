@@ -21,8 +21,9 @@ Basal browser teknologi. HTML og CSS er nødvendige for at kunne lave en hjemmes
 - React
 - npx create-react-app
 - react-router-dom
+- Axios
 
-React er et Framework der "streamliner" state management og giver mulighed for at lave dynamiske hjemmesider. npx create-react-app er en kommando der laver en React app. react-router-dom er et package der giver mulighed for at lave en single page application.
+React er et Framework der "streamliner" state management og giver mulighed for at lave dynamiske hjemmesider. npx create-react-app er en kommando der laver en React app. react-router-dom er et package der giver mulighed for at lave en single page application. Axios simplificerer HTTP requests.
 
 ### testing Valgfri opg. B
 
