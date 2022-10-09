@@ -1,5 +1,6 @@
 import Navbar from "../Components/Navbar"
 import { useState, useEffect } from "react"
+import "./Kalender.css"
 
 const Kalender = () => {
 
@@ -19,29 +20,39 @@ const Kalender = () => {
   var userselected = localStorage.getItem('userId')
 
   return (
-    <>
-      {
-        assets.filter((item) => {
-          for (var i = 0; i < item.users.length; i++) {
-            if (item.users[i].id == userselected) {
-              return true
-            }
+    <div className="containerbg mainbg">
+
+      <div>
+
+        {/* <div className="font36">Kalender</div> */}
+
+        <h1 className="titlegrid titlegrid-soegeside">
+          <span className="titlegrid-item1 font36">Kalender</span>
+        </h1>
+
+        <div className="itemgrid">
+          {
+            assets.filter((item) => {
+              for (var i = 0; i < item.users.length; i++) {
+                if (item.users[i].id == userselected) {
+                  return true
+                }
+              }
+              return false
+            }).map((item, index) => {
+              return (
+                <a key={index} href={'http://localhost:3000/Aktivitetsdetalje/' + item.id} className="testitem">
+                  <div className="font36 testitempreventoverflow">{item.name}</div>
+                  <div className="font18 testitemresize">{item.weekday} {item.time}</div>
+                </a>
+              )
+            })
           }
-          return false
-        }).map((item, index) => {
-          return (
-            <div key={index}>
-              <p>{item.name}</p>
-              <p>{item.weekday}</p>
-              <p>{item.time}</p>
-              <a href={'http://localhost:3000/Kalenderdetalje/' + item.id}>{item.id} link</a>
-            </div>
-          )
-        })
-      }
+        </div>
+      </div>
 
       <Navbar />
-    </>
+    </div>
   )
 }
 

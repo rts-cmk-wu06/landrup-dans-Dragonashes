@@ -1,0 +1,28 @@
+.itemgrid {
+  display: grid;
+  gap: 30px;
+  grid-template-rows: auto;
+  margin: 25px;
+}
+
+.testitem {
+  background: #e9e9e9;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--black);
+  padding-left: 25px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.testitempreventoverflow {
+  width: 306px;
+  overflow: hidden;
+  /* display: inline-block; */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.testitemresize {
+  font-weight: 600;
+}
