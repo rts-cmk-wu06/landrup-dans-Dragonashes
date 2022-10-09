@@ -60,6 +60,7 @@ const Kalender = () => {
               return true
             }
           }
+          return false
         }).map((item, index) => {
           return (
             <div key={index}>
