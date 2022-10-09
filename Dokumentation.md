@@ -6,7 +6,7 @@
 
 - Github
 
-Dette er er godt sted at holde styr på versions historikken. Det er også nemt at dele kode med andre.
+Dette er et godt sted at holde styr på versions historikken. Det er også nemt at dele kode med andre.
 
 ### Grundlæggende
 
@@ -25,7 +25,7 @@ Basal browser teknologi. HTML og CSS er nødvendige for at kunne lave en hjemmes
 
 React er et Framework der "streamliner" state management og giver mulighed for at lave dynamiske hjemmesider. npx create-react-app er en kommando der laver en React app. react-router-dom er et package der giver mulighed for at lave en single page application. Axios simplificerer HTTP requests.
 
-### testing Valgfri opg. B
+### testing (CI) Valgfri opg. B
 
 - Github Actions (se længere nede)
 
@@ -45,7 +45,7 @@ React er et Framework der "streamliner" state management og giver mulighed for a
 
 Jeg har løst den valgfrie opgave med Github Actions
 
-Jeg har lavet et workflow, der kører på push til master. Dette workflow kører en test, der tjekker om der er nogle fejl i koden. Hvis der er nogle fejl, vil workflowen fejle. Hvis der ikke er nogle fejl, vil workflowen lykkes.
+Jeg har lavet et workflow, der kører på push til master. Dette workflow kører en eslint test, der tjekker om der er nogle fejl i koden. Hvis der er nogle fejl, vil workflowen fejle. Hvis der ikke er nogle fejl, vil workflowen lykkes.
 
 ![Drag Racing](doc_assets/github-actions-failure-2.png)
 ![Drag Racing](doc_assets/github-actions.png)
