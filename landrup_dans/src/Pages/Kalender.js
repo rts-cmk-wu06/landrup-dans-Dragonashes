@@ -60,6 +60,44 @@ const Kalender = () => {
 
         <div className="itemgrid">
 
+        {/* {Activities.map((activity) => (
+            <div className="itemgrid-item">
+              <div className="itemgrid-item-kort">
+                <div className="itemgrid-item-kort-overskrift">
+                  <div className="itemgrid-item-kort-overskrift-text">
+                    {activity.name}
+                  </div>
+                </div>
+                <div className="itemgrid-item-kort-info">
+                  <div className="itemgrid-item-kort-info-text">
+                    {activity.description}
+                  </div>
+                </div>
+                <div className="itemgrid-item-kort-info">
+                  <div className="itemgrid-item-kort-info-text">
+                    {activity.weekday}
+                  </div>
+                </div>
+                <div className="itemgrid-item-kort-info">
+                  <div className="itemgrid-item-kort-info-text">
+                    {activity.time}
+                  </div>
+                </div>
+                <div className="itemgrid-item-kort-info">
+                  <div className="itemgrid-item-kort-info-text">
+                    {activity.location}
+                  </div>
+                </div>
+                <div className="itemgrid-item-kort-info">
+                  <div className="itemgrid-item-kort-info-text">
+                    {activity.instructorId}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))} */}
+
+
           {Instructor ? <div className="instructortext font18">Instructor panel</div> :
 
             assets.filter((item) => {
