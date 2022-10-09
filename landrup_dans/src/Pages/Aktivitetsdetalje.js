@@ -8,6 +8,23 @@ const Aktivitetsdetalje = () => {
 
   const [loadingactivities, setLoadingactivities] = useState(true)
   const [assets, setAssets] = useState([])
+  const [Age, setAge] = useState([])
+
+  var userselected = localStorage.getItem('userId')
+  const token = localStorage.getItem('token')
+
+  fetch('http://localhost:4000/api/v1/users/' + userselected,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      }
+    })
+    .then(response => response.json())
+    .then(response => {
+      setAge(response.age)
+    })
 
   useEffect(() => {
     fetch('http://localhost:4000/api/v1/activities/' + params.id)
@@ -18,13 +35,8 @@ const Aktivitetsdetalje = () => {
       })
   }, [params.id])
 
-  var userselected = localStorage.getItem('userId')
-  const token = localStorage.getItem('token')
-
-
-
   const [assets2, setAssets2] = useState([])
-  // const [Age, setAge] = useState([])
+
   useEffect(() => {
     fetch('http://localhost:4000/api/v1/activities/' + params.id,
       {
@@ -34,41 +46,42 @@ const Aktivitetsdetalje = () => {
       .then(response => {
         for (var i = 0; i < response.users.length; i++) {
           if (response.users[i].id == userselected) {
-            console.log('user is signed up')
-            console.log("users age is: " + response.users[i].age)
             setAssets2(response.users[i].id)
-            // setAge(response.users[i].age)
           }
         }
       })
   }, [params.id, userselected])
 
-  function handledelete() {
-    fetch('http://localhost:4000/api/v1/users/' + userselected + '/activities/' + params.id, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      })
-      .then(response => response.json())
-  }
-
   function handlepost() {
     if (token !== null) {
-      fetch('http://localhost:4000/api/v1/users/' + userselected + '/activities/' + params.id,
-        {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
-        })
-        .then(response => response.json())
 
+      if (Age >= assets.minAge && Age <= assets.maxAge) {
+        fetch('http://localhost:4000/api/v1/users/' + userselected + '/activities/' + params.id,
+          {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/x-www-form-urlencoded'
+            }
+          })
+          .then(response => response.json())
+      } else {
+        console.log("user is not old enough to attend activity")
+      }
     } else if (token === null) {
       console.log('Please login first')
     }
+  }
+
+  function handledelete() {
+    fetch('http://localhost:4000/api/v1/users/' + userselected + '/activities/' + params.id, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    })
+      .then(response => response.json())
   }
 
   function specialrender() {
@@ -97,6 +110,7 @@ const Aktivitetsdetalje = () => {
 
   return (
     <div className="containerbg mainbg">
+
       {loadingactivities ? <h1>Loading...</h1> :
         <>
           <div className="aktivitetsdetalje">
