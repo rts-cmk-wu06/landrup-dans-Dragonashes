@@ -88,6 +88,10 @@
   color: var(--white);
 }
 
+.unautheduser {
+  color: red;
+}
+
 /* unfinished styling */
 
 .colorbox {
