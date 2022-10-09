@@ -9,14 +9,16 @@ const Aktivitetsdetalje = () => {
   const [loadingactivities, setLoadingactivities] = useState(true)
   const [assets, setAssets] = useState([])
   const [Age, setAge] = useState([])
-  const [Loadingage, setLoadingage] = useState(true)
 
-  fetch('http://localhost:4000/api/v1/users/6' + userselected,
+  var userselected = localStorage.getItem('userId')
+  const token = localStorage.getItem('token')
+
+  fetch('http://localhost:4000/api/v1/users/' + userselected,
     {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
+        'Authorization': 'Bearer ' + token
       }
     })
     .then(response => response.json())
@@ -32,10 +34,6 @@ const Aktivitetsdetalje = () => {
         setAssets(data)
       })
   }, [params.id])
-
-  var userselected = localStorage.getItem('userId')
-  const token = localStorage.getItem('token')
-
 
   const [assets2, setAssets2] = useState([])
 
@@ -112,8 +110,6 @@ const Aktivitetsdetalje = () => {
 
   return (
     <div className="containerbg mainbg">
-
-      {/* {Loadingage ? (<div>Loading...</div>) : (<div>not loading</div>)} */}
 
       {loadingactivities ? <h1>Loading...</h1> :
         <>
