@@ -2,6 +2,7 @@ import './Login.css'
 import { useState, createRef } from "react"
 import { useNavigate } from "react-router-dom"
 import splash from '../assets/splash-image.jpg'
+import axios from 'axios'
 
 const Login = () => {
 
@@ -19,44 +20,28 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
-    fetch('http://localhost:4000/auth/token', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: `username=${username.current.value}&password=${password.current.value}`
-    }).then((response) => {
-      if (response.ok) {
-        return response.json()
-      } else {
-        setLoginError(true)
-        throw new Error('Unauthorized')
-      }
-    }).then((data) => {
-      localStorage.setItem('token', data.token)
-      localStorage.setItem('userId', data.userId)
-      localStorage.setItem('username', username)
-      navigate("/Kalender")
-
-      fetch('http://localhost:4000/api/v1/users/' + localStorage.getItem('userId'),
-        {
-          method: 'GET',
+    axios.post('http://localhost:4000/auth/token', {
+      username: username.current.value,
+      password: password.current.value
+    })
+      .then((response) => {
+        localStorage.setItem('token', response.data.token)
+        localStorage.setItem('userId', response.data.userId)
+        navigate('/Kalender')
+        axios.get('http://localhost:4000/api/v1/users/' + localStorage.getItem('userId'), {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}` // <-- no vars allowed to get users name
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
           }
         }).then((response) => {
-          if (response.ok) {
-            return response.json()
-          } else {
-            throw new Error('Unauthorized')
-          }
-        }).then((data2) => {
-          localStorage.setItem('username', data2.username)
+          localStorage.setItem('username', response.data.username)
         })
-    }).catch((error) => {
-      setLoading(false)
-      document.querySelector('.login-form').reset() // required
-    })
+      })
+      .catch((error) => {
+        setLoginError(true)
+        setLoading(false)
+        document.querySelector('.login-form').reset() // required
+        throw new Error('Unauthorized')
+      })
   }
 
   const Logout = () => {
@@ -75,7 +60,6 @@ const Login = () => {
 
           {/* <div className='colorbox'></div> */}
 
-          {loginError && <div>Unauthorized user!</div>}
           <form
             onSubmit={handleSubmit}
             className="login-form"
@@ -110,6 +94,7 @@ const Login = () => {
             >
               {loading ? 'Loading...' : 'Log ind'}
             </button>
+            {loginError && <div className='unautheduser'>Unauthorized user!</div>}
           </form>
         </div>
       ) : (

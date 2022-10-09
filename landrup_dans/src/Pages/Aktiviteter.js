@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import './Aktiviteter.css'
 import Navbar from "../Components/Navbar"
+import axios from 'axios'
 
 const Aktiviteter = () => {
 
@@ -8,10 +9,9 @@ const Aktiviteter = () => {
   const [Loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/v1/activities')
-      .then(response => response.json())
-      .then(data => {
-        setAktiviteter(data)
+    axios.get('http://localhost:4000/api/v1/activities')
+      .then(response => {
+        setAktiviteter(response.data)
         setLoading(false)
       })
   }, [])

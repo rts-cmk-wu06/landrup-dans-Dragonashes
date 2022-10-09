@@ -3,6 +3,7 @@ import './Soegeside.css'
 import magnifyingglass from '../assets/magnifying-glass.svg'
 import { useState, useEffect } from "react"
 import { useSearchParams } from "react-router-dom"
+import axios from "axios"
 
 const Soegeside = () => {
 
@@ -10,10 +11,9 @@ const Soegeside = () => {
   const [Loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/v1/activities')
-      .then(response => response.json())
-      .then(data => {
-        setAktiviteter(data)
+    axios.get('http://localhost:4000/api/v1/activities')
+      .then(response => {
+        setAktiviteter(response.data)
         setLoading(false)
       })
   }, [])

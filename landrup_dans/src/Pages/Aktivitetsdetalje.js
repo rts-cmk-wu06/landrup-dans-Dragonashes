@@ -2,6 +2,7 @@ import Navbar from "../Components/Navbar"
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import "./Aktivitetsdetalje.css"
+import axios from 'axios'
 
 const Aktivitetsdetalje = () => {
 
@@ -10,17 +11,14 @@ const Aktivitetsdetalje = () => {
 
   const [Age, setAge] = useState([])
 
-  fetch('http://localhost:4000/api/v1/users/' + userselected,
-    {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token
-      }
-    })
-    .then(response => response.json())
+  axios.get('http://localhost:4000/api/v1/users/' + userselected, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    }
+  })
     .then(response => {
-      setAge(response.age)
+      setAge(response.data.age)
     })
 
   let params = useParams()
@@ -29,45 +27,41 @@ const Aktivitetsdetalje = () => {
   const [assets, setAssets] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/v1/activities/' + params.id)
-      .then(response => response.json())
-      .then(data => {
+    axios.get('http://localhost:4000/api/v1/activities/' + params.id)
+      .then(response => {
         setLoadingactivities(false)
-        setAssets(data)
+        setAssets(response.data)
       })
   }, [params.id])
 
   const [assets2, setAssets2] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/v1/activities/' + params.id,
-      {
-        method: 'GET'
-      })
-      .then(response => response.json())
+    axios.get('http://localhost:4000/api/v1/activities/' + params.id)
       .then(response => {
-        for (var i = 0; i < response.users.length; i++) {
-          if (response.users[i].id == userselected) {
-            setAssets2(response.users[i].id)
+        for (var i = 0; i < response.data.users.length; i++) {
+          if (response.data.users[i].id == userselected) {
+            setAssets2(response.data.users[i].id)
           }
         }
       })
+
   }, [params.id, userselected])
 
   function handleLeaveActivity() {
-    fetch('http://localhost:4000/api/v1/users/' + userselected + '/activities/' + params.id, {
-      method: 'DELETE',
+    axios.delete('http://localhost:4000/api/v1/users/' + userselected + '/activities/' + params.id, {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     })
-      .then(response => response.json())
+      .then(response => {console.log(response)})
   }
 
   function handleJoinActivity() {
     if (token !== null) {
       if (Age >= assets.minAge && Age <= assets.maxAge) {
+        // dosent work with axios
         fetch('http://localhost:4000/api/v1/users/' + userselected + '/activities/' + params.id,
           {
             method: 'POST',
