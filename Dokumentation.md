@@ -6,11 +6,15 @@
 
 - Github
 
+Dette er er godt sted at holde styr på versions historikken. Det er også nemt at dele kode med andre.
+
 ### Grundlæggende
 
 - HTML
 - CSS
 - JavaScript
+
+Basal browser teknologi. HTML og CSS er nødvendige for at kunne lave en hjemmeside. JavaScript er nødvendigt for at kunne lave en dynamisk hjemmeside.
 
 ### Framework
 
@@ -18,10 +22,11 @@
 - npx create-react-app
 - react-router-dom
 
+React er et Framework der "streamliner" state management og giver mulighed for at lave dynamiske hjemmesider. npx create-react-app er en kommando der laver en React app. react-router-dom er et package der giver mulighed for at lave en single page application.
+
 ### testing Valgfri opg. B
 
-- Github Actions
-
+- Github Actions (se længere nede)
 
 ## Teck Stack Perspektivering
 
@@ -29,23 +34,20 @@
 
 - Axios i stedet for Fetch api forbereder JSON bedre
 - Netlify så man kan se en live version af appen, dette sikrer os at der ikke er ting som kommer til at virke anderledes end hvis man udvikler lokalt.
-- "Overveje" AppContext for at undgå at skulle hente localStorage i alle komponenter
+- "Overveje" AppContext for at undgå at skulle hente data i alle komponenter
 
 ### Forbedringer
 
 - Har ikke nået at implementere cookies i stedet for localStorage, da dette var valgfri opgave.
-- Kan omdøbe funktioner og placere variabler rigtigt så det er nemmere at læse koden.
-- CSS kan omskrives hvis der er tid til det, da det er lidt uoverskueligt.
+- Kode kan ofte omskrives hvis der er tid til det.
 
 ## Valgfri opgave B
 
 Jeg har løst den valgfrie opgave med Github Actions
 
-![Drag Racing](github-actions-failure-2.png)
-
 Jeg har lavet et workflow, der kører på push til master. Dette workflow kører en test, der tjekker om der er nogle fejl i koden. Hvis der er nogle fejl, vil workflowen fejle. Hvis der ikke er nogle fejl, vil workflowen lykkes.
 
-
+![Drag Racing](github-actions-failure-2.png)
 ![Drag Racing](github-actions.png)
 ![Drag Racing](github-actions-failure.png)
 ![Drag Racing](github-actions-success.png)
@@ -79,3 +81,9 @@ Jeg har brugt Github projects til opgaven, som er en type Kanban board. Mange af
 ![Drag Racing](dag4.png)
 
 ### dag 6
+
+![Drag Racing](dag6.png)
+
+### dag 7
+
+![Drag Racing](dag7.png)
