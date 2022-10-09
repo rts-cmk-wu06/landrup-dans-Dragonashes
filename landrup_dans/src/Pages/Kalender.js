@@ -16,6 +16,37 @@ const Kalender = () => {
 
   var userselected = localStorage.getItem('userId')
 
+  const [Instructor, setInstructor] = useState(false)
+  axios.get('http://localhost:4000/api/v1/users/' + userselected, {
+    headers: {
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+  })
+    .then(response => {
+      console.log(response.data.role)
+      if (response.data.role === 'instructor') {
+        setInstructor(true)
+      }
+    })
+
+
+  // /api/v1/activities
+
+  const [Activities, setActivities] = useState([])
+
+  useEffect(() => {
+  axios.get('http://localhost:4000/api/v1/activities', {
+    headers: {
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+  })
+    .then(response => {
+      setActivities(response.data)
+    })
+  }, [])
+
+    console.log(Activities)
+
   return (
     <div className="containerbg mainbg">
 
@@ -28,7 +59,9 @@ const Kalender = () => {
         </h1>
 
         <div className="itemgrid">
-          {
+
+          {Instructor ? <div className="instructortext font18">Instructor panel</div> :
+
             assets.filter((item) => {
               for (var i = 0; i < item.users.length; i++) {
                 if (item.users[i].id == userselected) {
@@ -44,7 +77,10 @@ const Kalender = () => {
                 </a>
               )
             })
+
           }
+
+
         </div>
       </div>
 

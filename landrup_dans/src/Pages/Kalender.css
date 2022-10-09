@@ -26,3 +26,7 @@
 .testitemresize {
   font-weight: 600;
 }
+
+.instructortext {
+  color: var(--white);
+}
