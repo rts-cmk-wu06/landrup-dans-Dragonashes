@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import './Aktiviteter.css'
-
 import Navbar from "../Components/Navbar"
 
 const Aktiviteter = () => {
@@ -17,21 +16,17 @@ const Aktiviteter = () => {
       })
   }, [])
 
-  var link = 'http://localhost:3000/Aktivitetsdetalje/'
-
   return (
     <div className="containerbg mainbg">
       {Loading ? <h1>Loading...</h1> :
         <>
-
           <div className="aktiviteter">
-
             <h1 className="titlegrid">
               <span className="titlegrid-item1 font36">&nbsp;Aktiviteter</span>
             </h1>
             {classes.map((item, index) => {
               return (
-                <a href={link + item.id} key={index} className="aktiviteter-item">
+                <a href={'http://localhost:3000/Aktivitetsdetalje/' + item.id} key={index} className="aktiviteter-item">
                   <img src={item.asset.url} className="aktiviteter-item-img" alt="" />
                   <div className="aktiviteter-item-infobar">
                     <div className="aktiviteter-item-infobar-text1 font18">{item.name}</div>

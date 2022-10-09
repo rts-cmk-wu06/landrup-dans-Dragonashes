@@ -1,18 +1,20 @@
 import './Login.css'
 import { useState, createRef } from "react"
 import { useNavigate } from "react-router-dom"
-
 import splash from '../assets/splash-image.jpg'
 
 const Login = () => {
 
+  const [loading, setLoading] = useState(false)
+
   let username = createRef()
   let password = createRef()
 
-  const [loading, setLoading] = useState(false)
   const [loginError, setLoginError] = useState(undefined)
 
   let navigate = useNavigate()
+
+  const token = localStorage.getItem('token')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -40,7 +42,7 @@ const Login = () => {
         {
           method: 'GET',
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
+            'Authorization': `Bearer ${localStorage.getItem('token')}` // <-- no vars allowed to get users name
           }
         }).then((response) => {
           if (response.ok) {
@@ -55,7 +57,6 @@ const Login = () => {
       setLoading(false)
       document.querySelector('.login-form').reset() // required
     })
-
   }
 
   const Logout = () => {
@@ -67,7 +68,7 @@ const Login = () => {
 
   return (
     <>
-      {!localStorage.getItem('token') ? (
+      {!token ? (
         <div className="loginbg">
 
           <img src={splash} alt="" className="loginsplash" />

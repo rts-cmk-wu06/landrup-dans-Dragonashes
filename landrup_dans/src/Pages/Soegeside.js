@@ -18,32 +18,20 @@ const Soegeside = () => {
       })
   }, [])
 
-
-  console.log(Aktiviteter)
-
-  // var searchdb = new Set(assets)
-  // var t = new Set(assets2)
-  // t.forEach(searchdb.add, searchdb)
-
   var searchdb2 = []
   Aktiviteter.forEach(function (value) {
     searchdb2.push(value.name)
     searchdb2.push(value.weekday)
   })
+
+  let [searchParams, setSearchParams] = useSearchParams()
+
   var searchdb3 = searchdb2.filter(function (item) {
     return item != null
   })
 
-  let [searchParams, setSearchParams] = useSearchParams()
-
-  var link = 'http://localhost:3000/Aktivitetsdetalje/'
-
   return (
     <div className="containerbg mainbg">
-
-      {/* <h1 className="titlegrid">
-        <span className="titlegrid-item1 font36">Søg</span>
-      </h1> */}
 
       <div className="container-item1">
 
@@ -74,14 +62,12 @@ const Soegeside = () => {
           <div className="magnifyingglassitem">
             <img src={magnifyingglass} className="magnifyingglass" alt='' />
           </div>
-          {/* <div className="borderitem"></div> */}
         </div>
 
         {
           searchParams.get("filter") ? (
             searchdb3
               .filter(item => {
-                console.log(item)
                 let filter = searchParams.get("filter")
                 if (!filter) return true
                 let name = item.toLowerCase()
@@ -101,7 +87,7 @@ const Soegeside = () => {
 
               {Aktiviteter.map((item, index) => {
                 return (
-                  <a href={link + item.id} key={index} className="aktiviteter-item">
+                  <a href={'http://localhost:3000/Aktivitetsdetalje/' + item.id} key={index} className="aktiviteter-item">
                     <img src={item.asset.url} className="aktiviteter-item-img" alt="" />
                     <div className="aktiviteter-item-infobar">
                       <div className="aktiviteter-item-infobar-text1 font18">{item.name}</div>

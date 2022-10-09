@@ -7,7 +7,6 @@ import {
   Routes,
   Route
 } from "react-router-dom"
-
 import Aktiviteter from './Pages/Aktiviteter'
 import Aktivitetsdetalje from './Pages/Aktivitetsdetalje'
 import Soegeside from './Pages/Soegeside'
